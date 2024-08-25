@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { NavbarFilmes } from '../NavbarFilmes';
+const apiKey = import.meta.env.VITE_OMDB_API_KEY;
+import '../../../styles/Movies.css'
 
 export const SearchResults = () => {
     const [searchParams] = useSearchParams();
@@ -11,13 +13,13 @@ export const SearchResults = () => {
     useEffect(() => {
         const fetchSearchResults = async () => {
             try {
-                const response = await axios.get(`http://www.omdbapi.com/?s=${query}&apikey=403abbfe`);
+                const response = await axios.get(`http://www.omdbapi.com/?s=${query}&apikey=${apiKey}`);
 
                 if (response.data && response.data.Search) {
                     const movies = response.data.Search;
 
                     const detailedMoviesPromises = movies.map(async (movie) => {
-                        const detailsResponse = await axios.get(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=403abbfe`);
+                        const detailsResponse = await axios.get(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`);
                         return detailsResponse.data;
                     });
 

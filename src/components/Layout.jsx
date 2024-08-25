@@ -1,11 +1,13 @@
-// src/components/Layout.js
 import { Outlet, Link, useLocation } from "react-router-dom";
 
 const Layout = () => {
   const location = useLocation();
-  
+
+  // Verifica se a rota é uma rota dinâmica
+  const isMovieDetailsPage = location.pathname.startsWith('/movie/');
   // Condicionalmente exibir navegação com base na rota
-  const shouldShowNav = location.pathname !== '/Movies';
+  const hideNavForPaths = ['/Movies', '/Users', '/search'];
+  const shouldShowNav = !hideNavForPaths.includes(location.pathname) && !isMovieDetailsPage;
 
   return (
     <>

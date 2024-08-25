@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { MovieDetails, Movies } from './components/Home/Pages/Movies';
+import { Movies } from './components/Home/Pages/Movies';
 import Layout from './components/Layout';
 import NoPage from './components/Home/Pages/NoPage';
 import { Users } from './components/Home/Pages/Users';
@@ -9,6 +9,7 @@ import { UserProvider } from './components/contexts/UserContext'; // Importando 
 import { SearchResults } from "./components/Home/Pages/SearchResults";
 import { Home } from "./components/Home/Pages/Home";
 import ProtectedRoute from "./components/Home/Pages/ProtectedRoutes";
+import { MovieDetails } from "./components/Home/Pages/MovieDetails";
 
 function App() {
   return (
