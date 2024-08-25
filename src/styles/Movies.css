@@ -323,6 +323,10 @@ main {
     background-size: auto;
   }
 
+  .movie-details{
+    margin-top: 130px;
+  }
+
   .movie-info h1 {
     font-size: 1.2rem;
   }
@@ -345,7 +349,7 @@ main {
   }
 
   .MovieCard {
-    width: 100px;
+    width: 141px;
   }
 
   .MovieCard h3 {
@@ -366,7 +370,7 @@ main {
   }
 
   .moviesPainel {
-    margin-top: 150px;
+    margin-top: 70px;
   }
 
   .description {
