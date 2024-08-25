@@ -13,16 +13,16 @@ export const Movies = () => {
     const [acaoMovies, setAcaoMovies] = useState([]);
     const [stranger, setStranger] = useState([]);
 
-   
+
     const fetchMovies = async (query, setter) => {
         try {
             const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`);
             console.log(apiKey)
-          
+
             if (response.data && response.data.Search) {
                 const movies = response.data.Search;
 
-               
+
                 const detailedMoviesPromises = movies.map(async (movie) => {
                     const detailsResponse = await axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`);
                     return detailsResponse.data;
@@ -31,7 +31,7 @@ export const Movies = () => {
                 const detailedMovies = await Promise.all(detailedMoviesPromises);
                 setter(detailedMovies);
             } else {
-               
+
                 setter([]);
             }
         } catch (error) {
@@ -51,9 +51,9 @@ export const Movies = () => {
         });
     }, []);
 
-    
+
     const handleSearch = (query) => {
-        fetchMovies(query, setTopRatedMovies);  
+        fetchMovies(query, setTopRatedMovies);
     };
 
     return (
@@ -129,7 +129,7 @@ export const Movies = () => {
 }
 
 export const MovieDetails = () => {
-    const { id } = useParams(); 
+    const { id } = useParams();
     const [movie, setMovie] = useState(null);
 
     useEffect(() => {
