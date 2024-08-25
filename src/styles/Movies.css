@@ -302,7 +302,7 @@ main {
   .movie-details {
     flex-direction: column;
     padding: 10px;
-    margin-top: 180px;
+    margin-top: 110px;
   }
 
   .movie-info h1 {
@@ -314,7 +314,7 @@ main {
   }
 
   .movie-poster img {
-    max-width: 100%;
+    max-width: 50%;
   }
 }
 
@@ -332,7 +332,7 @@ main {
   }
 
   .movie-poster img {
-    max-width: 100%;
+    max-width: 60%;
   }
 
   .filmes {
