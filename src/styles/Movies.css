@@ -1,0 +1,279 @@
+main {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0), rgb(15, 14, 14)),
+    url('../assets/strangerthings.jpg') no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+  position: absolute;
+  padding-bottom: 20px;
+  color: #fff;
+}
+
+.filmes img {
+  width: 40%;
+  margin-top: 100px;
+  margin-left: 50px;
+  display: block;
+}
+
+.filmes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Container {
+  margin-left: 50px;
+}
+
+.SerieContainer {
+  text-align: left;
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 800px;
+}
+
+.SerieContainer h3 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.list {
+  display: flex;
+  text-align: center;
+  margin: 20px auto;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap; 
+}
+
+.A16 {
+  border: 1px #555 solid;
+  color: #bbb5b5;
+}
+
+.list p {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.description {
+  width: 100%;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.gray {
+  color: #bbb5b5;
+}
+
+.white {
+  color: #fff;
+}
+
+.moviesPainel {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  align-items: center;
+  padding: 20px;
+  margin-top: 250px;
+}
+
+.searchSession {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  width: 80%;
+  max-width: 500px;
+}
+
+.searchSession input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.links {
+  color: white;
+  text-decoration: none;
+}
+
+.searchButton img {
+  width: 30px;
+  height: 30px;
+}
+
+.MovieSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.MovieCard {
+  background: #000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
+  width: 180px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.MovieCard:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.MovieCard img {
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.MovieCard h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.MovieCard p {
+  font-size: 14px;
+  color: #555;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .list {
+    margin: 0 auto;
+  }
+
+  .filmes img {
+    width: 60%;
+  }
+
+  .moviesPainel {
+    margin-left: 10px;
+  }
+
+  .MovieCard {
+    width: 150px;
+  }
+
+  .SerieContainer {
+    margin: 15px auto;
+  }
+
+  .SerieContainer h3 {
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  main {
+    background-size: cover;
+  }
+
+  .Container {
+    margin: 0;
+  }
+
+  .list {
+    justify-content: center;
+  }
+
+  .filmes {
+    margin-top: 190px;
+  }
+
+  .searchSession {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .searchSession input {
+    margin: 0 0 10px 0;
+  }
+
+  .moviesPainel {
+    margin-top: 150px;
+  }
+
+  .MovieCard {
+    width: 120px;
+  }
+
+  .SerieContainer {
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  .SerieContainer h3 {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    background-size: auto;
+  }
+
+  .filmes{
+    margin-top: 200px;
+  }
+
+  .filmes img {
+    width: 80%;
+    margin-left: 40px;
+  }
+
+  .MovieCard {
+    width: 100px;
+  }
+
+  .MovieCard h3 {
+    font-size: 14px;
+  }
+
+  .MovieCard p {
+    font-size: 12px;
+  }
+
+  .SerieContainer {
+    margin: 5px auto;
+    text-align: center;
+  }
+
+  .SerieContainer h3 {
+    font-size: 18px;
+  }
+
+  .moviesPainel{
+    margin-top: 150px;
+  }
+
+  .description {
+    font-size: 14px;
+    padding: 0 5px;
+  }
+}
