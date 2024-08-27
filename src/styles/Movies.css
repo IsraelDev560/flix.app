@@ -204,6 +204,14 @@ main {
     max-width: 600px;
   }
 
+  .search-results {
+    margin-top: 100px;
+  }
+
+  .search-container{
+    max-width: 500px; 
+  }
+
   .MovieCard img {
     max-width: 250px;
   }
@@ -232,7 +240,7 @@ main {
   }
 
   .search-results {
-    margin-top: 180px;
+    margin-top: 130px;
   }
 
   main {
@@ -245,6 +253,10 @@ main {
 
   .list {
     justify-content: center;
+  }
+
+  .search-container{
+    max-width: 400px; 
   }
 
   .searchSession {
@@ -286,6 +298,10 @@ main {
   .filmes img {
     width: 80%;
     margin-left: 40px;
+  }
+
+  .search-container{
+    max-width: 300px; 
   }
 
   .SerieContainer {
