@@ -1,10 +1,13 @@
 import { NavbarFilmes } from '../NavbarFilmes'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LogoStrangerThings from '../../../assets/logo-strangerthigns.png'
 import axios from "axios"
 import '../../../styles/Movies.css'
-import { Link } from 'react-router-dom';
+import Slider from 'react-slick'; // Importa o Slider do react-slick
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css'
+
 const apiKey = import.meta.env.VITE_OMDB_API_KEY;
 
 export const Movies = () => {
@@ -13,6 +16,33 @@ export const Movies = () => {
     const [acaoMovies, setAcaoMovies] = useState([]);
     const [stranger, setStranger] = useState([]);
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    };
 
     const fetchMovies = async (query, setter) => {
         try {
@@ -41,7 +71,7 @@ export const Movies = () => {
     useEffect(() => {
 
         Promise.all([
-            fetchMovies('Inception', setTopRatedMovies),
+            fetchMovies('Marvel', setTopRatedMovies),
             fetchMovies('Drama', setDramaMovies),
             fetchMovies('Acao', setAcaoMovies),
             fetchMovies('Stranger Things', setStranger)
@@ -56,36 +86,39 @@ export const Movies = () => {
     };
 
     return (
-        <main>
-            <NavbarFilmes onSearch={handleSearch} />
-            <div className="filmes">
-                <img src={LogoStrangerThings} alt="Logo Stranger Things" />
-                <div className='Container'>
-                    {stranger.slice(0, 1).map((movie) => (
-                        <div className='SerieContainer' key={movie.imdbID}>
-                            <h3>{movie.Title}</h3>
-                            <div className='list'>
-                                <span className='gray'>{movie.Year}</span>
-                                <span className='space'>|</span>
-                                <p className='A16'> A16 </p>
-                                <span className='space'>|</span>
-                                <span className='gray'>4 Temporadas </span>
-                                <span className='space'>|</span>
-                                <span className='gray'> {movie.Genre}</span>
+        <>
+            <main>
+                <NavbarFilmes onSearch={handleSearch} />
+                <div className="filmes">
+                    <img src={LogoStrangerThings} alt="Logo Stranger Things" />
+                    <div className='Container'>
+                        {stranger.slice(0, 1).map((movie) => (
+                            <div className='SerieContainer' key={movie.imdbID}>
+                                <h3>{movie.Title}</h3>
+                                <div className='list'>
+                                    <span className='gray'>{movie.Year}</span>
+                                    <span className='space'>|</span>
+                                    <p className='A16'> A16 </p>
+                                    <span className='space'>|</span>
+                                    <span className='gray'>4 Temporadas </span>
+                                    <span className='space'>|</span>
+                                    <span className='gray'> {movie.Genre}</span>
+                                </div>
+                                <p className='description'>
+                                    Quando um garoto desaparece, a cidade toda participa nas buscas. Mas o que encontram são segredos, forças sobrenaturais e uma menina.
+                                </p>
+                                <span className='gray'>Elenco: </span>{movie.Actors} <br />
+                                <p className='gray'>Criação: <span className='white'>{movie.Writer}</span></p>
                             </div>
-                            <p className='description'>
-                                Quando um garoto desaparece, a cidade toda participa nas buscas. Mas o que encontram são segredos, forças sobrenaturais e uma menina.
-                            </p>
-                            <span className='gray'>Elenco: </span>{movie.Actors} <br />
-                            <p className='gray'>Criação: <span className='white'>{movie.Writer}</span></p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </main>
             <div className='moviesPainel'>
                 <div className='MoviesContainer'>
                     <h2>Mais Votados</h2>
                     <div className='MovieSection'>
+                    <Slider {...settings}>
                         {topRatedMovies && topRatedMovies.slice(0, 7).map((movie) => (
                             <div className='MovieCard' key={movie.imdbID}>
                                 <Link className='links' to={`/movie/${movie.imdbID}`}>
@@ -95,10 +128,12 @@ export const Movies = () => {
                                 </Link>
                             </div>
                         ))}
+                        </Slider>
                     </div>
 
                     <h2>Dramas</h2>
                     <div className='MovieSection'>
+                    <Slider {...settings}>
                         {dramaMovies && dramaMovies.slice(0, 7).map((movie) => (
                             <div className='MovieCard' key={movie.imdbID}>
                                 <Link className='links' to={`/movie/${movie.imdbID}`}>
@@ -108,9 +143,11 @@ export const Movies = () => {
                                 </Link>
                             </div>
                         ))}
+                        </Slider>
                     </div>
                     <h2>Ação</h2>
                     <div className='MovieSection'>
+                    <Slider {...settings}>
                         {acaoMovies && acaoMovies.slice(0, 7).map((movie) => (
                             <div className='MovieCard' key={movie.imdbID}>
                                 <Link className='links' to={`/movie/${movie.imdbID}`}>
@@ -120,9 +157,10 @@ export const Movies = () => {
                                 </Link>
                             </div>
                         ))}
+                        </Slider>
                     </div>
                 </div>
             </div>
-        </main>
+        </>
     );
 }

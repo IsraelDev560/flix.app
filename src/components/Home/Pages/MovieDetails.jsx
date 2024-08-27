@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 
 import axios from "axios"
-import '../../../styles/Movies.css'
+import '../../../styles/MoviesDetails.css'
 
 const apiKey = import.meta.env.VITE_OMDB_API_KEY;
 

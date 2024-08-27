@@ -3,16 +3,28 @@ import Lupa from '../../assets/lupa.svg'
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from 'react';
 import { UserContext } from '.././contexts/UserContext';
+import '../../styles/Movies.css'
 
 export const NavbarFilmes = ({ onSearch }) => {
     const { selectedUser } = useContext(UserContext);
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
+    const [inputDisabled, setInputDisabled] = useState(true)
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleInputChange = (e) => {
         setQuery(e.target.value);
     }
+
+    const activeInput = () => {
+        setInputDisabled(prevState => !prevState)
+    }
+
+    const handleEnterPress = (event) => {
+        if (event.key === 'Enter') {
+          handleSearch(query);
+        }
+      };
 
     const handleSearch = () => {
         onSearch(query); 
@@ -29,12 +41,6 @@ export const NavbarFilmes = ({ onSearch }) => {
                 <Link to="/">
                     <img className='logo' src={Logo} alt="Netflix logo" />
                 </Link>
-                <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-                    <li>TV Shows</li>
-                    <li>Movies/Series</li>
-                    <li>Recently Added</li>
-                    <li>My List</li>
-                </ul>
                 <div className='User'>
                     {selectedUser ? (
                         <div className='selected-user'>
@@ -46,14 +52,16 @@ export const NavbarFilmes = ({ onSearch }) => {
                             <p className='select-one-user'>Select one user</p>
                         </div>
                     )}
-                    <input
+                     <input
                         type="text"
                         value={query}
                         onChange={handleInputChange}
                         placeholder="Search for a movie..."
-                        className='searchSession'
+                        className={`searchSession ${!inputDisabled ? 'show' : ''}`}
+                        onKeyDown={handleEnterPress}
+                        disabled={inputDisabled}
                     />
-                    <button className='searchButton' onClick={handleSearch}>
+                    <button className='searchButton' onClick={activeInput}>
                         <img src={Lupa} alt="" />
                     </button>
                 </div>
