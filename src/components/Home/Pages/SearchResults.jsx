@@ -46,13 +46,13 @@ export const SearchResults = () => {
     useEffect(() => {
         const fetchSearchResults = async () => {
             try {
-                const response = await axios.get(`http://www.omdbapi.com/?s=${query}&apikey=${apiKey}`);
+                const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`);
 
                 if (response.data && response.data.Search) {
                     const movies = response.data.Search;
 
                     const detailedMoviesPromises = movies.map(async (movie) => {
-                        const detailsResponse = await axios.get(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`);
+                        const detailsResponse = await axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`);
                         return detailsResponse.data;
                     });
 
