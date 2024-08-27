@@ -46,6 +46,7 @@ export const SearchResults = () => {
     useEffect(() => {
         const fetchSearchResults = async () => {
             try {
+                console.log("Bombou a pesquisa "+ query)
                 const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${apiKey}`);
 
                 if (response.data && response.data.Search) {
